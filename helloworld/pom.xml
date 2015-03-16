@@ -53,6 +53,7 @@
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.6</maven.compiler.target>
         <maven.compiler.source>1.6</maven.compiler.source>
+        <version.log4j>1.2.17</version.log4j>
     </properties>
 
     <dependencyManagement>
@@ -71,6 +72,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>${version.log4j}</version>
+	</dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -97,6 +103,12 @@
             <artifactId>jboss-servlet-api_3.0_spec</artifactId>
             <scope>provided</scope>
         </dependency>
+
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<scope>provided</scope>
+	</dependency>
 
     </dependencies>
 

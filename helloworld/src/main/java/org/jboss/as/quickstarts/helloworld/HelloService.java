@@ -16,6 +16,8 @@
  */
 package org.jboss.as.quickstarts.helloworld;
 
+import org.apache.log4j.Logger;
+
 /**
  * A simple CDI service which is able to say hello to someone
  * 
@@ -24,7 +26,11 @@ package org.jboss.as.quickstarts.helloworld;
  */
 public class HelloService {
 
+private static Logger logger = Logger.getLogger(HelloService.class);
+
     String createHelloMessage(String name) {
+        System.out.println("HelloService call System.out PrintStream");
+        logger.debug("HelloService log a debug message");
         return "Hello " + name + "!";
     }
 
