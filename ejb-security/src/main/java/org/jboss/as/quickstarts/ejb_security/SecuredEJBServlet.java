@@ -23,9 +23,11 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
 import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.jboss.as.quickstarts.ejb_security.SecuredEJB;
 
@@ -71,6 +73,21 @@ public class SecuredEJBServlet extends HttpServlet {
         writer.println("<p>" + "Principal  : " + principal + "</p>");
         writer.println("<p>" + "Remote User : " + remoteUser + "</p>");
         writer.println("<p>" + "Authentication Type : " + authType + "</p>");
+
+        System.out.println(req.getServletContext().getServerInfo());
+        writer.println(req.getServletContext().getServerInfo());
+        writer.println("</br>");
+        // http sessoin id
+        HttpSession session = req.getSession(true);
+        System.out.println("session id" + session.getId());
+        writer.println(session.getId());
+        writer.println("</br>");
+
+        // JSESSIONID
+        Cookie[] cookies = req.getCookies();
+        System.out.println(cookies[0].getName() + " : " + cookies[0].getValue());
+        writer.println(cookies[0].getName() + " : " + cookies[0].getValue());
+
         writer.println(PAGE_FOOTER);
         writer.close();
     }
