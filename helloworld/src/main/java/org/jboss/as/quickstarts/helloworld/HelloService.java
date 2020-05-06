@@ -23,9 +23,11 @@ package org.jboss.as.quickstarts.helloworld;
  *
  */
 public class HelloService {
+    private static final boolean devProfile = System.getProperty("prbz_dev") != null;
 
     String createHelloMessage(String name) {
-        return "Hello " + name + "!";
+        boolean devProfileEnv = System.getenv().get("prbz_dev") != null;
+        return "Hello " + name + "!" + devProfile + devProfileEnv;
     }
 
 }
