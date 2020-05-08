@@ -17,8 +17,8 @@
 package org.jboss.as.quickstarts.helloworld;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+// import java.nio.file.Files;
+// import java.nio.file.Paths;
 
 /**
  * A simple CDI service which is able to say hello to someone
@@ -31,11 +31,12 @@ public class HelloService {
 
     String createHelloMessage(String name) throws IOException {
         boolean devProfileEnv = System.getenv().get("prbz_dev") != null;
-        String aphroditeConfigLocation = System.getenv().get("aphrodite.config");
-        String content = new String(Files.readAllBytes(Paths.get(aphroditeConfigLocation)));
+        String aphroditeConfigLocationEnv = System.getenv().get("aphrodite.config");
+        String aphroditeConfigLocationProperty = System.getProperty("aphrodite.config");
+        // String content = new String(Files.readAllBytes(Paths.get(aphroditeConfigLocationEnv)));
 
-        return "Hello " + name + "!" + devProfile + devProfileEnv + "aphrodite config location"
-                + aphroditeConfigLocation + " content" + content;
+        return "Hello " + name + "!" + devProfile + devProfileEnv + "aphrodite config location from env "
+                + aphroditeConfigLocationEnv + "aphrodite config location from property " + aphroditeConfigLocationProperty;
     }
 
 }
