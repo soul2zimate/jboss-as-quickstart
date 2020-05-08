@@ -35,8 +35,8 @@ public class HelloService {
         String aphroditeConfigLocationProperty = System.getProperty("aphrodite.config");
         // String content = new String(Files.readAllBytes(Paths.get(aphroditeConfigLocationEnv)));
 
-        return "Hello " + name + "!" + devProfile + devProfileEnv + "aphrodite config location from env "
-                + aphroditeConfigLocationEnv + "aphrodite config location from property " + aphroditeConfigLocationProperty;
+        return "Hello " + name + "!" + devProfile + devProfileEnv + " aphrodite config location from env "
+                + aphroditeConfigLocationEnv + " aphrodite config location from property " + aphroditeConfigLocationProperty;
     }
 
 }
