@@ -16,6 +16,7 @@
  */
 package org.jboss.as.quickstarts.helloworld;
 
+import java.io.File;
 import java.io.IOException;
 // import java.nio.file.Files;
 // import java.nio.file.Paths;
@@ -35,8 +36,17 @@ public class HelloService {
         String aphroditeConfigLocationProperty = System.getProperty("aphrodite.config");
         // String content = new String(Files.readAllBytes(Paths.get(aphroditeConfigLocationEnv)));
 
+        String cacheDirEnv = System.getenv().get("cacheDir");
+        String cacheNameEnv = System.getenv().get("cacheName");
+        String cacheSizeEnv = System.getenv().get("cacheSize");
+
+        File f =  new File(cacheDirEnv, cacheNameEnv);
+
+        String cacheInfo = cacheDirEnv + cacheNameEnv + cacheSizeEnv;
+
         return "Hello " + name + "!" + devProfile + devProfileEnv + " aphrodite config location from env "
-                + aphroditeConfigLocationEnv + " aphrodite config location from property " + aphroditeConfigLocationProperty;
+                + aphroditeConfigLocationEnv + " aphrodite config location from property " + aphroditeConfigLocationProperty
+                + " cacheInfo " + cacheInfo;
     }
 
 }
