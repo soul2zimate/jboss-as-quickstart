@@ -16,6 +16,10 @@
  */
 package org.jboss.as.quickstarts.helloworld;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 /**
  * A simple CDI service which is able to say hello to someone
  *
@@ -25,9 +29,13 @@ package org.jboss.as.quickstarts.helloworld;
 public class HelloService {
     private static final boolean devProfile = System.getProperty("prbz_dev") != null;
 
-    String createHelloMessage(String name) {
+    String createHelloMessage(String name) throws IOException {
         boolean devProfileEnv = System.getenv().get("prbz_dev") != null;
-        return "Hello " + name + "!" + devProfile + devProfileEnv;
+        String aphroditeConfigLocation = System.getenv().get("aphrodite.config");
+        String content = new String(Files.readAllBytes(Paths.get(aphroditeConfigLocation)));
+
+        return "Hello " + name + "!" + devProfile + devProfileEnv + "aphrodite config location"
+                + aphroditeConfigLocation + " content" + content;
     }
 
 }
