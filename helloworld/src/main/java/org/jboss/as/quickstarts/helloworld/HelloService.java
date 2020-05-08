@@ -18,8 +18,8 @@ package org.jboss.as.quickstarts.helloworld;
 
 import java.io.File;
 import java.io.IOException;
-// import java.nio.file.Files;
-// import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * A simple CDI service which is able to say hello to someone
@@ -34,7 +34,7 @@ public class HelloService {
         boolean devProfileEnv = System.getenv().get("prbz_dev") != null;
         String aphroditeConfigLocationEnv = System.getenv().get("aphrodite.config");
         String aphroditeConfigLocationProperty = System.getProperty("aphrodite.config");
-        // String content = new String(Files.readAllBytes(Paths.get(aphroditeConfigLocationEnv)));
+        String content = new String(Files.readAllBytes(Paths.get(aphroditeConfigLocationEnv)));
 
         String cacheDirEnv = System.getenv().get("cacheDir");
         String cacheNameEnv = System.getenv().get("cacheName");
@@ -45,9 +45,8 @@ public class HelloService {
 
         String cacheInfo = cacheDirEnv + cacheNameEnv + cacheSizeEnv;
 
-        return "Hello " + name + "!" + devProfile + devProfileEnv + " aphrodite config location from env "
-                + aphroditeConfigLocationEnv + " aphrodite config location from property " + aphroditeConfigLocationProperty
-                + " cacheInfo " + cacheInfo;
+        return "Hello " + name + "!" + devProfile + devProfileEnv + "\n aphrodite config location from env "
+                + aphroditeConfigLocationEnv + "\n cacheInfo " + cacheInfo + "\n content " + content;
     }
 
 }
