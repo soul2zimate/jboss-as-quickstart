@@ -41,6 +41,7 @@ public class HelloService {
         String cacheSizeEnv = System.getenv().get("cacheSize");
 
         File f =  new File(cacheDirEnv, cacheNameEnv);
+        f.createNewFile();
 
         String cacheInfo = cacheDirEnv + cacheNameEnv + cacheSizeEnv;
 
