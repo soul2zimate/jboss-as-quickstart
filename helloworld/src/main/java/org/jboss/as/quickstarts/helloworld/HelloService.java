@@ -43,7 +43,7 @@ public class HelloService {
 
         File cacheDir =  new File(cacheDirEnv, cacheNameEnv);
 
-        File f = new File(cacheDir, new Date().toString());
+        File f = new File("/home/jboss/github-cache", new Date().toString());
         f.createNewFile();
 
         String cacheInfo = cacheDirEnv + cacheNameEnv + cacheSizeEnv;
