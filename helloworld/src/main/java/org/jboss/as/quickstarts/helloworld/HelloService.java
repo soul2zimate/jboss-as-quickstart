@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 
 /**
  * A simple CDI service which is able to say hello to someone
@@ -33,14 +34,16 @@ public class HelloService {
     String createHelloMessage(String name) throws IOException {
         boolean devProfileEnv = System.getenv().get("prbz_dev") != null;
         String aphroditeConfigLocationEnv = System.getenv().get("aphrodite.config");
-        String aphroditeConfigLocationProperty = System.getProperty("aphrodite.config");
+        // String aphroditeConfigLocationProperty = System.getProperty("aphrodite.config");
         String content = new String(Files.readAllBytes(Paths.get(aphroditeConfigLocationEnv)));
 
         String cacheDirEnv = System.getenv().get("cacheDir");
         String cacheNameEnv = System.getenv().get("cacheName");
         String cacheSizeEnv = System.getenv().get("cacheSize");
 
-        File f =  new File(cacheDirEnv, cacheNameEnv);
+        File cacheDir =  new File(cacheDirEnv, cacheNameEnv);
+
+        File f = new File(cacheDir, new Date().toString());
         f.createNewFile();
 
         String cacheInfo = cacheDirEnv + cacheNameEnv + cacheSizeEnv;
